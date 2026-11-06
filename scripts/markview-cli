@@ -1,0 +1,21 @@
+#!/bin/zsh
+set -euo pipefail
+
+APP="/Applications/Markview.app"
+
+if [[ ! -d "$APP" ]]; then
+  echo "Markview is not installed in /Applications." >&2
+  exit 1
+fi
+
+if [[ "$#" -eq 0 ]]; then
+  open -a "$APP"
+  exit 0
+fi
+
+resolved=()
+for target in "$@"; do
+  resolved+=("${target:A}")
+done
+
+open -a "$APP" "${resolved[@]}"

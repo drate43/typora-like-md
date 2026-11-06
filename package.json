@@ -1,0 +1,40 @@
+{
+  "name": "markview",
+  "version": "0.7.109",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "tauri:dev": "tauri dev",
+    "backup:version": "node scripts/create-version-backup.mjs",
+    "tauri:build": "npm run backup:version && tauri build --bundles app && node scripts/create-dmg.mjs",
+    "tauri:build:intel": "npm run backup:version && tauri build --target x86_64-apple-darwin --bundles app && node scripts/create-dmg.mjs --target x86_64-apple-darwin",
+    "tauri:dmg": "node scripts/create-dmg.mjs",
+    "tauri:dmg:intel": "node scripts/create-dmg.mjs --target x86_64-apple-darwin"
+  },
+  "dependencies": {
+    "@milkdown/kit": "7.21.2",
+    "@milkdown/plugin-math": "7.5.9",
+    "@tauri-apps/api": "2.11.1",
+    "@tauri-apps/plugin-dialog": "2.7.1",
+    "@tauri-apps/plugin-fs": "2.5.1",
+    "dompurify": "3.4.11",
+    "highlight.js": "^11.11.1",
+    "katex": "0.16.25",
+    "mermaid": "11.15.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "remark-frontmatter": "5.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.3",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "material-symbols": "^0.45.4",
+    "typescript": "6.0.3",
+    "vite": "8.0.16"
+  }
+}
